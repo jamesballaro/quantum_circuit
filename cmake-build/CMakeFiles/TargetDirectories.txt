@@ -1,0 +1,4 @@
+/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles/quantum_circuit.dir
+/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles/edit_cache.dir
+/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles/rebuild_cache.dir
+/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles/quantum_circuit_autogen.dir

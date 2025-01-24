@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/QuantumCircuit/UI/">
+    <file alias="src/qml/main.qml">/Users/James/GitHub/quantum-circuit/src/qml/main.qml</file>
+  </qresource>
+</RCC>
+

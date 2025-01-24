@@ -1,0 +1,12 @@
+--bare
+-I
+/Users/James/GitHub/quantum-circuit
+-I
+/opt/homebrew/share/qt/qml
+--resource
+/Users/James/GitHub/quantum-circuit/.qt/rcc/qmake_QuantumCircuit_UI.qrc
+--resource
+/Users/James/GitHub/quantum-circuit/.qt/rcc/quantum_circuit_raw_qml_0.qrc
+/Users/James/GitHub/quantum-circuit/src/qml/main.qml
+--json
+/Users/James/GitHub/quantum-circuit/quantum_circuit_qmllint.json

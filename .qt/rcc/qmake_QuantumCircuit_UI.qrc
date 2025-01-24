@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/QuantumCircuit/UI">
+    <file alias="qmldir">/Users/James/GitHub/quantum-circuit/QuantumCircuit/UI/qmldir</file>
+  </qresource>
+</RCC>
+

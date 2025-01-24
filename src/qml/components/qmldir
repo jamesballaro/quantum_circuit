@@ -1,0 +1,3 @@
+module Components
+PButton 1.0 PButton.qml
+GateIcon 1.0 GateIcon.qml
