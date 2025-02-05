@@ -1,2 +1,0 @@
-set(__QT_DEPLOY_TARGET_quantum_circuit_FILE /Users/James/GitHub/quantum-circuit/build/quantum_circuit)
-set(__QT_DEPLOY_TARGET_quantum_circuit_TYPE EXECUTABLE)

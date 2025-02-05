@@ -71,7 +71,7 @@ include CMakeFiles/quantum_circuit.dir/flags.make
 
 qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/resources.qrc
 qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/qml/main.qml
-qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/qml/components/pButton.qml
+qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/qml/components/PButton.qml
 qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/qml/components/GateIcon.qml
 qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/qml/components/qmldir
 qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/qml/icons/hadamard.png
@@ -85,9 +85,9 @@ qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/qml/icons/phase.png
 qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/qml/icons/toffoli.png
 qrc_resources.cpp: /Users/James/GitHub/quantum-circuit/src/qml/icons/default.png
 qrc_resources.cpp: src/resources.qrc.depends
-qrc_resources.cpp: /opt/homebrew/share/qt/libexec/rcc
+qrc_resources.cpp: /opt/homebrew/Cellar/qt/6.7.3/share/qt/libexec/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating qrc_resources.cpp"
-	/opt/homebrew/share/qt/libexec/rcc --name resources --output /Users/James/GitHub/quantum-circuit/cmake-build/qrc_resources.cpp /Users/James/GitHub/quantum-circuit/src/resources.qrc
+	/opt/homebrew/Cellar/qt/6.7.3/share/qt/libexec/rcc --name resources --output /Users/James/GitHub/quantum-circuit/cmake-build/qrc_resources.cpp /Users/James/GitHub/quantum-circuit/src/resources.qrc
 
 CMakeFiles/quantum_circuit.dir/quantum_circuit_autogen/mocs_compilation.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
 CMakeFiles/quantum_circuit.dir/quantum_circuit_autogen/mocs_compilation.cpp.o: quantum_circuit_autogen/mocs_compilation.cpp
@@ -103,10 +103,24 @@ CMakeFiles/quantum_circuit.dir/quantum_circuit_autogen/mocs_compilation.cpp.s: c
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/quantum_circuit_autogen/mocs_compilation.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/cmake-build/quantum_circuit_autogen/mocs_compilation.cpp -o CMakeFiles/quantum_circuit.dir/quantum_circuit_autogen/mocs_compilation.cpp.s
 
+CMakeFiles/quantum_circuit.dir/src/bits.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
+CMakeFiles/quantum_circuit.dir/src/bits.cpp.o: /Users/James/GitHub/quantum-circuit/src/bits.cpp
+CMakeFiles/quantum_circuit.dir/src/bits.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/quantum_circuit.dir/src/bits.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/bits.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/bits.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/bits.cpp.o -c /Users/James/GitHub/quantum-circuit/src/bits.cpp
+
+CMakeFiles/quantum_circuit.dir/src/bits.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/quantum_circuit.dir/src/bits.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/James/GitHub/quantum-circuit/src/bits.cpp > CMakeFiles/quantum_circuit.dir/src/bits.cpp.i
+
+CMakeFiles/quantum_circuit.dir/src/bits.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/bits.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/bits.cpp -o CMakeFiles/quantum_circuit.dir/src/bits.cpp.s
+
 CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
 CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o: /Users/James/GitHub/quantum-circuit/src/complex_custom.cpp
 CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o -c /Users/James/GitHub/quantum-circuit/src/complex_custom.cpp
 
 CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.i: cmake_force
@@ -117,24 +131,38 @@ CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/complex_custom.cpp -o CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.s
 
-CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
-CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o: /Users/James/GitHub/quantum-circuit/src/gate_a_base.cpp
-CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o -c /Users/James/GitHub/quantum-circuit/src/gate_a_base.cpp
+CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
+CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o: /Users/James/GitHub/quantum-circuit/src/gategridmodel.cpp
+CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o -c /Users/James/GitHub/quantum-circuit/src/gategridmodel.cpp
 
-CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/James/GitHub/quantum-circuit/src/gate_a_base.cpp > CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.i
+CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/James/GitHub/quantum-circuit/src/gategridmodel.cpp > CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.i
 
-CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/gate_a_base.cpp -o CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.s
+CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/gategridmodel.cpp -o CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.s
+
+CMakeFiles/quantum_circuit.dir/src/library.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
+CMakeFiles/quantum_circuit.dir/src/library.cpp.o: /Users/James/GitHub/quantum-circuit/src/library.cpp
+CMakeFiles/quantum_circuit.dir/src/library.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/quantum_circuit.dir/src/library.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/library.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/library.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/library.cpp.o -c /Users/James/GitHub/quantum-circuit/src/library.cpp
+
+CMakeFiles/quantum_circuit.dir/src/library.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/quantum_circuit.dir/src/library.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/James/GitHub/quantum-circuit/src/library.cpp > CMakeFiles/quantum_circuit.dir/src/library.cpp.i
+
+CMakeFiles/quantum_circuit.dir/src/library.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/library.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/library.cpp -o CMakeFiles/quantum_circuit.dir/src/library.cpp.s
 
 CMakeFiles/quantum_circuit.dir/src/main.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
 CMakeFiles/quantum_circuit.dir/src/main.cpp.o: /Users/James/GitHub/quantum-circuit/src/main.cpp
 CMakeFiles/quantum_circuit.dir/src/main.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/quantum_circuit.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/quantum_circuit.dir/src/main.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/main.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/main.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/main.cpp.o -c /Users/James/GitHub/quantum-circuit/src/main.cpp
 
 CMakeFiles/quantum_circuit.dir/src/main.cpp.i: cmake_force
@@ -148,7 +176,7 @@ CMakeFiles/quantum_circuit.dir/src/main.cpp.s: cmake_force
 CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
 CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o: /Users/James/GitHub/quantum-circuit/src/matrix.cpp
 CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o -c /Users/James/GitHub/quantum-circuit/src/matrix.cpp
 
 CMakeFiles/quantum_circuit.dir/src/matrix.cpp.i: cmake_force
@@ -159,24 +187,24 @@ CMakeFiles/quantum_circuit.dir/src/matrix.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/matrix.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/matrix.cpp -o CMakeFiles/quantum_circuit.dir/src/matrix.cpp.s
 
-CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
-CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o: /Users/James/GitHub/quantum-circuit/src/multi_bit_components.cpp
-CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o -c /Users/James/GitHub/quantum-circuit/src/multi_bit_components.cpp
+CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
+CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o: /Users/James/GitHub/quantum-circuit/src/multi_bit_gates.cpp
+CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o -c /Users/James/GitHub/quantum-circuit/src/multi_bit_gates.cpp
 
-CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/James/GitHub/quantum-circuit/src/multi_bit_components.cpp > CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.i
+CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/James/GitHub/quantum-circuit/src/multi_bit_gates.cpp > CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.i
 
-CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/multi_bit_components.cpp -o CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.s
+CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/multi_bit_gates.cpp -o CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.s
 
 CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
 CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o: /Users/James/GitHub/quantum-circuit/src/qGUI.cpp
 CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o -c /Users/James/GitHub/quantum-circuit/src/qGUI.cpp
 
 CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.i: cmake_force
@@ -190,7 +218,7 @@ CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.s: cmake_force
 CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
 CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o: /Users/James/GitHub/quantum-circuit/src/q_circuit.cpp
 CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o -c /Users/James/GitHub/quantum-circuit/src/q_circuit.cpp
 
 CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.i: cmake_force
@@ -201,24 +229,24 @@ CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/q_circuit.cpp -o CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.s
 
-CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
-CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o: /Users/James/GitHub/quantum-circuit/src/single_bit_components.cpp
-CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o -c /Users/James/GitHub/quantum-circuit/src/single_bit_components.cpp
+CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
+CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o: /Users/James/GitHub/quantum-circuit/src/single_bit_gates.cpp
+CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o -c /Users/James/GitHub/quantum-circuit/src/single_bit_gates.cpp
 
-CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/James/GitHub/quantum-circuit/src/single_bit_components.cpp > CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.i
+CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/James/GitHub/quantum-circuit/src/single_bit_gates.cpp > CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.i
 
-CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/single_bit_components.cpp -o CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.s
+CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/James/GitHub/quantum-circuit/src/single_bit_gates.cpp -o CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.s
 
 CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
 CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o: /Users/James/GitHub/quantum-circuit/src/toolbox.cpp
 CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o -MF CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o.d -o CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o -c /Users/James/GitHub/quantum-circuit/src/toolbox.cpp
 
 CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.i: cmake_force
@@ -232,7 +260,7 @@ CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.s: cmake_force
 CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o: CMakeFiles/quantum_circuit.dir/flags.make
 CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o: qrc_resources.cpp
 CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o: CMakeFiles/quantum_circuit.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o -MF CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o.d -o CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o -c /Users/James/GitHub/quantum-circuit/cmake-build/qrc_resources.cpp
 
 CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.i: cmake_force
@@ -246,14 +274,16 @@ CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.s: cmake_force
 # Object files for target quantum_circuit
 quantum_circuit_OBJECTS = \
 "CMakeFiles/quantum_circuit.dir/quantum_circuit_autogen/mocs_compilation.cpp.o" \
+"CMakeFiles/quantum_circuit.dir/src/bits.cpp.o" \
 "CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o" \
-"CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o" \
+"CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o" \
+"CMakeFiles/quantum_circuit.dir/src/library.cpp.o" \
 "CMakeFiles/quantum_circuit.dir/src/main.cpp.o" \
 "CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o" \
-"CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o" \
+"CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o" \
 "CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o" \
 "CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o" \
-"CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o" \
+"CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o" \
 "CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o" \
 "CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o"
 
@@ -261,29 +291,31 @@ quantum_circuit_OBJECTS = \
 quantum_circuit_EXTERNAL_OBJECTS =
 
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/quantum_circuit_autogen/mocs_compilation.cpp.o
+build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/bits.cpp.o
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.o
-build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o
+build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o
+build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/library.cpp.o
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/main.cpp.o
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/matrix.cpp.o
-build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o
+build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/qGUI.cpp.o
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.o
-build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o
+build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/src/toolbox.cpp.o
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/qrc_resources.cpp.o
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/build.make
-build/quantum_circuit: /opt/homebrew/lib/QtWidgets.framework/Versions/A/QtWidgets
-build/quantum_circuit: /opt/homebrew/lib/QtQuickControls2.framework/Versions/A/QtQuickControls2
-build/quantum_circuit: /opt/homebrew/lib/QtQuick.framework/Versions/A/QtQuick
-build/quantum_circuit: /opt/homebrew/lib/QtQmlModels.framework/Versions/A/QtQmlModels
-build/quantum_circuit: /opt/homebrew/lib/QtQml.framework/Versions/A/QtQml
-build/quantum_circuit: /opt/homebrew/lib/libQt6QmlBuiltins.a
-build/quantum_circuit: /opt/homebrew/lib/QtNetwork.framework/Versions/A/QtNetwork
-build/quantum_circuit: /opt/homebrew/lib/QtOpenGL.framework/Versions/A/QtOpenGL
-build/quantum_circuit: /opt/homebrew/lib/QtGui.framework/Versions/A/QtGui
-build/quantum_circuit: /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/QtWidgets.framework/Versions/A/QtWidgets
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/QtQuickControls2.framework/Versions/A/QtQuickControls2
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/QtQuick.framework/Versions/A/QtQuick
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/QtQmlModels.framework/Versions/A/QtQmlModels
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/QtQml.framework/Versions/A/QtQml
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/libQt6QmlBuiltins.a
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/QtNetwork.framework/Versions/A/QtNetwork
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/QtOpenGL.framework/Versions/A/QtOpenGL
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/QtGui.framework/Versions/A/QtGui
+build/quantum_circuit: /opt/homebrew/Cellar/qt/6.7.3/lib/QtCore.framework/Versions/A/QtCore
 build/quantum_circuit: CMakeFiles/quantum_circuit.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable build/quantum_circuit"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/James/GitHub/quantum-circuit/cmake-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable build/quantum_circuit"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/quantum_circuit.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -4,105 +4,116 @@
 #include <limits>
 #include <cmath>        
 #include <iomanip>
+#include <sstream>
+
 
 void matrix::set_data(std::vector<std::complex<double>> &vector)
 {
-  if (vector.size() == size){
-    for(size_t i{0}; i<size; i++){ 
-			matrix_data[i] = vector[i];
-			}
-    } 
-  else{
-		std::cout<<std::endl;
-    std::cout<<"Error: The array must have the same number of elements as the matrix"<<std::endl; 
-    exit(1);
-  }
+    if (vector.size() == size){
+        for(size_t i{0}; i<size; i++){ 
+                matrix_data[i] = vector[i];
+                }
+        } 
+    else{
+        std::ostringstream err_msg;
+        err_msg << "Error: The array (size " << vector.size() << ") and matrix (size " << size << ") are different sizes.";
+        throw std::runtime_error(err_msg.str());  
+    }
 }
+matrix matrix::null(){
+  this->matrix_data == nullptr;
+  return *this;
+}
+
+bool matrix::is_null()
+{
+  return matrix_data == nullptr;
+}
+
 //Copy Constructor
 matrix::matrix(const matrix &mat)
 {
-  // Copy size and declare new array
-  matrix_data = nullptr; 
-  rows = mat.rows;
-  columns = mat.columns;
-  size = mat.size;
-  if(size > 0) {
-    matrix_data = new std::complex<double>[size];
-    // Copy values into new array
-    for(size_t i{0}; i < size; i++){
-      matrix_data[i] = mat.matrix_data[i];
+    // Copy size and declare new array
+    matrix_data = nullptr; 
+    rows = mat.rows;
+    columns = mat.columns;
+    size = mat.size;
+    if(size > 0) {
+        matrix_data = new std::complex<double>[size];
+        // Copy values into new array
+        for(size_t i{0}; i < size; i++){
+        matrix_data[i] = mat.matrix_data[i];
+        }
     }
-  }
 }
 //Move Constructor
 matrix::matrix(matrix &&mat)
 { 
-  std::cout<<"Move Constructor Called"<<std::endl;
-  size = mat.size;
-  rows = mat.rows;
-  columns = mat.columns;
-  matrix_data = mat.matrix_data;
-  mat.columns = 0;
-  mat.rows = 0;
-  mat.size = 0;
-  mat.matrix_data = nullptr;
+    std::cout<<"Move Constructor Called"<<std::endl;
+    size = mat.size;
+    rows = mat.rows;
+    columns = mat.columns;
+    matrix_data = mat.matrix_data;
+    mat.columns = 0;
+    mat.rows = 0;
+    mat.size = 0;
+    mat.matrix_data = nullptr;
 }
 //Copy assignment
 matrix & matrix::operator=(const matrix &mat)
 {
-  if(&mat == this){ 
-    std::cout<<"Self-assignment in copy assignment operator"<<std::endl;  
-    return *this; // no self assignment
-  }
-    // First delete this object's array
-  delete[] matrix_data; matrix_data = nullptr; size = 0;
-    // Now copy size and declare new array
-  size = mat.size;
-  rows = mat.rows;
-  columns = mat.columns;
-  if(size > 0){
-    matrix_data = new std::complex<double>[size];
-    // Copy values into new array
-    for(size_t i{}; i < size; i++) matrix_data[i] = mat.matrix_data[i];
-  }
-  return *this; // Special pointer!!!
+    if(&mat == this){ 
+        std::cout<<"Self-assignment in copy assignment operator"<<std::endl;  
+        return *this; // no self assignment
+    }
+        // First delete this object's array
+    delete[] matrix_data; matrix_data = nullptr; size = 0;
+        // Now copy size and declare new array
+    size = mat.size;
+    rows = mat.rows;
+    columns = mat.columns;
+    if(size > 0){
+        matrix_data = new std::complex<double>[size];
+        // Copy values into new array
+        for(size_t i{}; i < size; i++) matrix_data[i] = mat.matrix_data[i];
+    }
+    return *this; // Special pointer!!!
 }
 //Move Assignment
 matrix & matrix::operator=(matrix&& mat)
 {
-  std::swap(rows, mat.rows);
-  std::swap(columns, mat.columns);
-  std::swap(size, mat.size);
-  std::swap(matrix_data, mat.matrix_data);
-  mat.columns = 0;
-  mat.rows = 0;
-  mat.size = 0;
-  mat.matrix_data = nullptr;
-  return *this; 
+    std::swap(rows, mat.rows);
+    std::swap(columns, mat.columns);
+    std::swap(size, mat.size);
+    std::swap(matrix_data, mat.matrix_data);
+    mat.columns = 0;
+    mat.rows = 0;
+    mat.size = 0;
+    mat.matrix_data = nullptr;
+    return *this; 
 }
 
 //Matrix operations:
 //Multiplication
 matrix matrix::operator*(matrix& mat)
 {
-  matrix temp(rows, mat.columns);
-  if (columns == mat.rows){
-		for(int i{1}; i <= rows; i++){
-			for(int j{1}; j <= mat.columns; j++){
-				std::complex<double> sum = 0;
-				for(int k{1}; k <= columns; k++){
-					sum += operator()(i, k) * mat(k, j);
-				}
-				temp(i, j) = sum;
-			}
-		}
-	} 
-	else{
-		std::cout<<std::endl;
-    std::cout<<"Error: These two matrices are not compatible for multiplication"<<std::endl; 
-    temp.matrix_data[0] = {NAN};
-  }
-  return temp;
+    matrix temp(rows, mat.columns);
+    if (columns == mat.rows){
+        for(int i{1}; i <= rows; i++){
+            for(int j{1}; j <= mat.columns; j++){
+                std::complex<double> sum = 0;
+                for(int k{1}; k <= columns; k++){
+                    sum += operator()(i, k) * mat(k, j);
+                }
+                temp(i, j) = sum;
+            }
+        }
+    } 
+    else{
+        throw std::runtime_error("Error: These two matrices are not compatible for multiplication");
+        temp.matrix_data[0] = {NAN};
+    }
+    return temp;
 }
 //Kronecker Product
 matrix matrix::tensor_product(matrix& mat_B) 

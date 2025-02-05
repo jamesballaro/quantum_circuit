@@ -190,6 +190,30 @@ quantum_circuit_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/quantum_circuit_autogen/mocs_compilation.cpp.s
 .PHONY : quantum_circuit_autogen/mocs_compilation.cpp.s
 
+src/bits.o: src/bits.cpp.o
+.PHONY : src/bits.o
+
+# target to build an object file
+src/bits.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/bits.cpp.o
+.PHONY : src/bits.cpp.o
+
+src/bits.i: src/bits.cpp.i
+.PHONY : src/bits.i
+
+# target to preprocess a source file
+src/bits.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/bits.cpp.i
+.PHONY : src/bits.cpp.i
+
+src/bits.s: src/bits.cpp.s
+.PHONY : src/bits.s
+
+# target to generate assembly for a file
+src/bits.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/bits.cpp.s
+.PHONY : src/bits.cpp.s
+
 src/complex_custom.o: src/complex_custom.cpp.o
 .PHONY : src/complex_custom.o
 
@@ -214,29 +238,53 @@ src/complex_custom.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/complex_custom.cpp.s
 .PHONY : src/complex_custom.cpp.s
 
-src/gate_a_base.o: src/gate_a_base.cpp.o
-.PHONY : src/gate_a_base.o
+src/gategridmodel.o: src/gategridmodel.cpp.o
+.PHONY : src/gategridmodel.o
 
 # target to build an object file
-src/gate_a_base.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.o
-.PHONY : src/gate_a_base.cpp.o
+src/gategridmodel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.o
+.PHONY : src/gategridmodel.cpp.o
 
-src/gate_a_base.i: src/gate_a_base.cpp.i
-.PHONY : src/gate_a_base.i
+src/gategridmodel.i: src/gategridmodel.cpp.i
+.PHONY : src/gategridmodel.i
 
 # target to preprocess a source file
-src/gate_a_base.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.i
-.PHONY : src/gate_a_base.cpp.i
+src/gategridmodel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.i
+.PHONY : src/gategridmodel.cpp.i
 
-src/gate_a_base.s: src/gate_a_base.cpp.s
-.PHONY : src/gate_a_base.s
+src/gategridmodel.s: src/gategridmodel.cpp.s
+.PHONY : src/gategridmodel.s
 
 # target to generate assembly for a file
-src/gate_a_base.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/gate_a_base.cpp.s
-.PHONY : src/gate_a_base.cpp.s
+src/gategridmodel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/gategridmodel.cpp.s
+.PHONY : src/gategridmodel.cpp.s
+
+src/library.o: src/library.cpp.o
+.PHONY : src/library.o
+
+# target to build an object file
+src/library.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/library.cpp.o
+.PHONY : src/library.cpp.o
+
+src/library.i: src/library.cpp.i
+.PHONY : src/library.i
+
+# target to preprocess a source file
+src/library.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/library.cpp.i
+.PHONY : src/library.cpp.i
+
+src/library.s: src/library.cpp.s
+.PHONY : src/library.s
+
+# target to generate assembly for a file
+src/library.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/library.cpp.s
+.PHONY : src/library.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -286,29 +334,29 @@ src/matrix.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/matrix.cpp.s
 .PHONY : src/matrix.cpp.s
 
-src/multi_bit_components.o: src/multi_bit_components.cpp.o
-.PHONY : src/multi_bit_components.o
+src/multi_bit_gates.o: src/multi_bit_gates.cpp.o
+.PHONY : src/multi_bit_gates.o
 
 # target to build an object file
-src/multi_bit_components.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.o
-.PHONY : src/multi_bit_components.cpp.o
+src/multi_bit_gates.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.o
+.PHONY : src/multi_bit_gates.cpp.o
 
-src/multi_bit_components.i: src/multi_bit_components.cpp.i
-.PHONY : src/multi_bit_components.i
+src/multi_bit_gates.i: src/multi_bit_gates.cpp.i
+.PHONY : src/multi_bit_gates.i
 
 # target to preprocess a source file
-src/multi_bit_components.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.i
-.PHONY : src/multi_bit_components.cpp.i
+src/multi_bit_gates.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.i
+.PHONY : src/multi_bit_gates.cpp.i
 
-src/multi_bit_components.s: src/multi_bit_components.cpp.s
-.PHONY : src/multi_bit_components.s
+src/multi_bit_gates.s: src/multi_bit_gates.cpp.s
+.PHONY : src/multi_bit_gates.s
 
 # target to generate assembly for a file
-src/multi_bit_components.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/multi_bit_components.cpp.s
-.PHONY : src/multi_bit_components.cpp.s
+src/multi_bit_gates.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/multi_bit_gates.cpp.s
+.PHONY : src/multi_bit_gates.cpp.s
 
 src/qGUI.o: src/qGUI.cpp.o
 .PHONY : src/qGUI.o
@@ -358,29 +406,29 @@ src/q_circuit.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/q_circuit.cpp.s
 .PHONY : src/q_circuit.cpp.s
 
-src/single_bit_components.o: src/single_bit_components.cpp.o
-.PHONY : src/single_bit_components.o
+src/single_bit_gates.o: src/single_bit_gates.cpp.o
+.PHONY : src/single_bit_gates.o
 
 # target to build an object file
-src/single_bit_components.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.o
-.PHONY : src/single_bit_components.cpp.o
+src/single_bit_gates.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.o
+.PHONY : src/single_bit_gates.cpp.o
 
-src/single_bit_components.i: src/single_bit_components.cpp.i
-.PHONY : src/single_bit_components.i
+src/single_bit_gates.i: src/single_bit_gates.cpp.i
+.PHONY : src/single_bit_gates.i
 
 # target to preprocess a source file
-src/single_bit_components.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.i
-.PHONY : src/single_bit_components.cpp.i
+src/single_bit_gates.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.i
+.PHONY : src/single_bit_gates.cpp.i
 
-src/single_bit_components.s: src/single_bit_components.cpp.s
-.PHONY : src/single_bit_components.s
+src/single_bit_gates.s: src/single_bit_gates.cpp.s
+.PHONY : src/single_bit_gates.s
 
 # target to generate assembly for a file
-src/single_bit_components.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/single_bit_components.cpp.s
-.PHONY : src/single_bit_components.cpp.s
+src/single_bit_gates.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_circuit.dir/build.make CMakeFiles/quantum_circuit.dir/src/single_bit_gates.cpp.s
+.PHONY : src/single_bit_gates.cpp.s
 
 src/toolbox.o: src/toolbox.cpp.o
 .PHONY : src/toolbox.o
@@ -422,30 +470,36 @@ help:
 	@echo "... quantum_circuit_autogen/mocs_compilation.o"
 	@echo "... quantum_circuit_autogen/mocs_compilation.i"
 	@echo "... quantum_circuit_autogen/mocs_compilation.s"
+	@echo "... src/bits.o"
+	@echo "... src/bits.i"
+	@echo "... src/bits.s"
 	@echo "... src/complex_custom.o"
 	@echo "... src/complex_custom.i"
 	@echo "... src/complex_custom.s"
-	@echo "... src/gate_a_base.o"
-	@echo "... src/gate_a_base.i"
-	@echo "... src/gate_a_base.s"
+	@echo "... src/gategridmodel.o"
+	@echo "... src/gategridmodel.i"
+	@echo "... src/gategridmodel.s"
+	@echo "... src/library.o"
+	@echo "... src/library.i"
+	@echo "... src/library.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/matrix.o"
 	@echo "... src/matrix.i"
 	@echo "... src/matrix.s"
-	@echo "... src/multi_bit_components.o"
-	@echo "... src/multi_bit_components.i"
-	@echo "... src/multi_bit_components.s"
+	@echo "... src/multi_bit_gates.o"
+	@echo "... src/multi_bit_gates.i"
+	@echo "... src/multi_bit_gates.s"
 	@echo "... src/qGUI.o"
 	@echo "... src/qGUI.i"
 	@echo "... src/qGUI.s"
 	@echo "... src/q_circuit.o"
 	@echo "... src/q_circuit.i"
 	@echo "... src/q_circuit.s"
-	@echo "... src/single_bit_components.o"
-	@echo "... src/single_bit_components.i"
-	@echo "... src/single_bit_components.s"
+	@echo "... src/single_bit_gates.o"
+	@echo "... src/single_bit_gates.i"
+	@echo "... src/single_bit_gates.s"
 	@echo "... src/toolbox.o"
 	@echo "... src/toolbox.i"
 	@echo "... src/toolbox.s"

@@ -1,7 +1,7 @@
 <RCC>
   <qresource prefix="/">
     <file>qml/main.qml</file>
-    <file>qml/components/pButton.qml</file>
+    <file>qml/components/PButton.qml</file>
     <file>qml/components/GateIcon.qml</file>
     <file>qml/components/qmldir</file>
     
