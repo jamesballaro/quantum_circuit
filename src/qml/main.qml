@@ -38,6 +38,10 @@ ApplicationWindow {
             iconSource: ""
         }
     }
+    
+    FloatingIcon {
+        id: floatingGateIcon
+    }
 
     Connections {
         target: gateModel
@@ -217,118 +221,31 @@ ApplicationWindow {
                 id: iconGrid
                 columns: 3
                 spacing: 10
-                Component.onCompleted:{
-                    iconGrid.createGrid(gates)
-                }
 
-                function createGateIcon(type, icon) {
-                    let newGate = gateComponent.createObject(iconGrid,{
-                        "iconSource": icon,
-                        "gateType": type,
-                        "fromPalette": true,
+                Repeater {
+                    model: gates
+                    GateIcon {
+                        id: gridIcon
+                        iconSource: model.iconSource
+                        gateType: model.gateType
                         color: "transparent"
-                    });
-                    if (newGate) {
-                        console.log("iconGrid: ", type);
-                    } else {
-                        console.error("Failed to create gate:", type);
-                    }
-                }
-                function createGrid(model){
-                    for(var i = 0; i < model.count; ++i) {
-                        createGateIcon(model.get(i).gateType,model.get(i).iconSource)
+                        fromPalette:true
+
+                        onLeftClicked: {
+                            console.log("left-clicked " + gateType)
+                            // qgui.handleLeftClick(gateType)
+                        }
+                        onRightClicked:{
+                            console.log("right-clicked" + gateType )
+                            // qgui.handleRightClick(gateType)
+                        }
+                        onCreateFloatingIcon: {
+                            let globalPos = gridIcon.mapToItem(root.contentItem, 0, 0);
+                            floatingGateIcon.startDragging(iconSource, gateType, globalPos.x, globalPos.y);
+                        }
                     }
                 }
             }
-            // Grid {
-            //     leftPadding: parent.leftPadding
-            //     id: iconGrid
-            //     columns: 3
-            //     spacing: 10
-
-            //     ListModel {
-            //         id: gateListModel
-            //     }
-
-            //     Component.onCompleted: {
-            //         populateInitialGates();
-            //     }
-
-            //     function populateInitialGates() {
-            //         gateListModel.clear(); // Reset the model
-            //         for (var i = 0; i < gates.count; ++i) {
-            //             gateListModel.append({
-            //                 "gateType": gates.get(i).gateType,
-            //                 "iconSource": gates.get(i).iconSource,
-            //                 "index": i,
-            //                 "fromPalette": true
-            //             });
-            //         }
-            //     }
-
-            //     function replaceGate(index) {
-            //         let original = gates.get(index);
-            //         gateListModel.set(index, {
-            //             "gateType": original.gateType,
-            //             "iconSource": original.iconSource,
-            //             "index": index
-            //         });
-            //     }
-
-            //     Repeater {
-            //         model: gateListModel
-            //         delegate: GateIcon {
-            //             id: gateIcon
-            //             iconSource: model.iconSource
-            //             gateType: model.gateType
-            //             color: "transparent"
-            //             fromPalette: true
-
-            //             Drag.active: false
-            //             Drag.source: gateIcon
-            //             Drag.hotSpot.x: width / 2
-            //             Drag.hotSpot.y: height / 2
-
-            //             MouseArea {
-            //                 anchors.fill: parent
-            //                 drag.target: parent
-            //                 onReleased: {
-            //                     if (gateIcon.Drag.active) {
-            //                         console.log("Gate type " + gateType + " was dragged.");
-            //                         gateIcon.Drag.active = false;
-
-            //                         // Restore gate immediately
-            //                         replaceGate(model.index);
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
-
-                // Repeater {
-                //     model: gates
-                //     GateIcon {
-                //         iconSource: model.iconSource
-                //         gateType: model.gateType
-                //         color: "transparent"
-                //         fromPalette:true
-
-                //         Connections {
-                //             target: model
-                //             function leftClicked() {
-                //                 console.log("Gate type " + gateType + " left-clicked")
-                //                 // qgui.handleLeftClick(gateType)
-                //             }
-                //             function rightClicked() {
-                //                 console.log("Gate type " + gateType + " right-clicked")
-                //                 // qgui.handleRightClick(gateType)
-                //             }
-                //         }
-                //     }
-                // }
-            
-
             Column{
                 id: buttonGroup
                 topPadding: root.height - 450

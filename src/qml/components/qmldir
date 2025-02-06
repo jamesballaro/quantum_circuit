@@ -2,3 +2,4 @@ module Components
 PButton 1.0 PButton.qml
 GateIcon 1.0 GateIcon.qml
 BitButton 1.0 BitButton.qml
+FloatingIcon 1.0 FloatingIcon.qml
