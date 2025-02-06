@@ -159,7 +159,7 @@ void GateGridModel::syncToCircuit()
     else{
         for (int r = 0; r < m_bitCount; r++) {
             for (int c = 0; c < m_timeCount; c++) {
-                QString gateName = m_data[c][r];
+                QString gateName = m_data[r][c];
                 if (!gateName.isEmpty()){
                     qDebug()<<"Adding gate"<<gateName<<"to"<<r<<c;
                     m_circuit->add_gate(gateName.toStdString(), {r}, c);

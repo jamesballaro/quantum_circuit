@@ -52,6 +52,7 @@ Rectangle {
             if (!isInteractive) return;
             gateIcon.Drag.active = true;
             cursorShape = Qt.ClosedHandCursor;
+            gateIcon.z = 100
         }
 
         onReleased: {
@@ -72,10 +73,12 @@ Rectangle {
                 gateIcon.y = newPos.y;
                 // console.log("row,col",row,column)
 
-                let rowIndex = fromPalette? snapPosition.i : row
-                let colIndex = fromPalette? snapPosition.j : column
+                
+                let colIndex = fromPalette? snapPosition.i : column
+                let rowIndex = fromPalette? snapPosition.j : row
 
                 gateModel.insertGate(gateType,rowIndex,colIndex);
+                gateIcon.z = 1
                 // gateIcon.fromPalette = false;
             } else {
                 // let newPos = grid.mapFromItem(circuitGrid,snapPosition.x,snapPosition.y)
