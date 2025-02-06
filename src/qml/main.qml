@@ -173,7 +173,7 @@ ApplicationWindow {
                         anchors.fill: parent
 
                         Component.onCompleted:{
-                            console.log("textDelegate:",model.gateType) 
+                            console.log("loader:",model.gateType,"at",row,column) 
                         }
 
                         property string type : model.gateType
