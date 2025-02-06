@@ -1,21 +1,34 @@
 #include "qGUI.h"
+#include <QLibraryInfo>
 
-qGUI::qGUI(QApplication *app, QObject *parent) 
-  : QObject(parent), circuit(std::make_shared<q_circuit>()) {
-      // const QMetaObject* metaObject = this->metaObject();
-      // for (int i = 0; i < metaObject->methodCount(); ++i) {
-      //   qDebug() << "Exposed method:" << metaObject->method(i).methodSignature();
-      // }
+qGUI::qGUI(QApplication *app, QObject *parent)
+    : QObject(parent)
+{   
+    m_circuit = std::make_shared<q_circuit>();
+    // m_circuit->add_gate("Hadamard",{0},1);
+    
+    try{
+    std::string debug_msg{m_circuit->debug_circuit()};
+        qDebug()<<QString::fromStdString(debug_msg);}
+    catch(std::exception& e){
+        qDebug()<<QString::fromStdString(e.what());
+    }
+
+    m_gateModel = std::make_unique<GateGridModel>(m_circuit.get(), this);
+
+    // const QMetaObject* metaObject = this->metaObject();
+    // for (int i = 0; i < metaObject->methodCount(); ++i) {
+    //     qDebug() << "Exposed method:" << metaObject->method(i).methodSignature();
+    // }
+
+    qDebug() << "Is m_gateModel initialized?" << (m_gateModel != nullptr);
+    emit gateModelChanged();
 }
-
 qGUI::~qGUI() {}
-
-void qGUI::launch()
+void qGUI::debug()
 {
-  circuit = std::make_shared<q_circuit>();
-  submenu(circuit);
+    qDebug()<<"Debugging: qGUI::debug() called";
 }
-
 void qGUI::loadQml()
 {
   // Change this, not elegant but grants hot reload functionality
@@ -36,102 +49,15 @@ void qGUI::loadQml()
       return;
 }
 
-void qGUI::submenu(std::shared_ptr<q_circuit> circuit)
-{
-	while(true){
-   std::this_thread::sleep_for(std::chrono::milliseconds(750));
-		std::cout<<"Options:"<<std::endl;
-		std::cout<<"1) Add gate."<<std::endl;
-		std::cout<<"2) Remove Gate."<<std::endl;
-		std::cout<<"3) See circuit."<<std::endl;
-		std::cout<<"4) See circuit matrix."<<std::endl;
-    std::cout<<std::endl;
-    std::cout<<"Or:"<<std::endl;
-		std::cout<<"5) Save Circuit."<<std::endl;
-		std::cout<<"6) Load Circuit."<<std::endl;
-    std::cout<<"7) New circuit."<<std::endl;
-		std::cout<<"8) See gate information."<<std::endl;
-    std::cout<<"9) Exit program."<<std::endl;
-		std::cout<<std::endl;
-		std::cout<<"Please pick an option: ";
-
-		std::string choice_2;
-		std::getline(std::cin, choice_2);
-		if(!choice_2.empty()){
-      int option2{toolbox::int_verifier(choice_2)};
-			if(option2 < 1 || option2 > 9){
-				std::cout<<std::endl;
-				std::cerr<<"Error: Please select one of the options:"<<std::endl;
-				std::cout<<std::endl;
-			}
-      if(option2 == 1){circuit->add_gate();}
-      if(option2 == 2){circuit->remove_gate();}
-      if(option2 == 3){circuit->draw_circuit();}
-      if(option2 == 4){circuit->get_circuit_matrix();}
-      if(option2 == 5){circuit->save();}
-      if(option2 == 6){circuit->load();}
-      if(option2 == 7){
-        circuit->create_circuit();
-      	submenu(circuit);
-      }
-      if(option2 == 8){circuit->gate_info();}
-      if(option2 == 9){
-        std::cout<<"Thank you for using this program!"<<std::endl;
-        std::cout<<"************************************************"<<std::endl;
-        exit(1);
-      }
+QString qGUI::gateInfo(const QString &gateType)
+{   
+    std::string gate = gateType.toStdString();
+    std::string info;
+    
+    if(library::string_to_ptr(gate) == nullptr){
+        throw std::runtime_error("No match found");
     }
-    else {
-      std::cout<<"Empty entry!"<<std::endl;
-      std::cout<<"Please enter again: "<<std::endl;
-    }
-	}
+    info = library::string_to_ptr(gate)->get_info();
+
+    return QString::fromStdString(info);
 }
-
-void qGUI::debugtest() {
-  std::cout << "Test method called.";
-}
-
-
-// void Menu::menu()
-// {
-//  std::cout<<"************************************************"<<std::endl;
-//  std::cout<<"    Welcome to the Quantum Circuits Program!"<<std::endl;
-//  std::cout<<"************************************************"<<std::endl;
-//  std::cout<<std::endl;
-//  std::shared_ptr<q_circuit> default_circuit = std::make_shared<q_circuit>();
-//  while(true){
-//  std::this_thread::sleep_for(std::chrono::milliseconds(750));
-// 	std::cout<<"Options:"<<std::endl;
-// 	std::cout<<"1) Create quantum circuit."<<std::endl;
-// 	std::cout<<"2) See gate information."<<std::endl;
-// 	std::cout<<"3) Exit program."<<std::endl;
-// 	std::cout<<std::endl;
-// 	std::cout<<"Please pick an option: ";
-
-// 	std::string choice_1;
-// 	std::getline(std::cin, choice_1);
-//   if(!choice_1.empty()){
-//     int option1{toolbox::int_verifier(choice_1)};
-// 		if(option1 < 1 || option1 > 3){
-// 			std::cout<<std::endl;
-// 			std::cerr<<"Error: Please select one of the options:"<<std::endl;
-// 			std::cout<<std::endl;
-// 		}
-//     if(option1 == 1){
-//       default_circuit->create_circuit();
-//       submenu(default_circuit);
-//     }
-// 		if(option1 == 2){default_circuit->gate_info();}
-//     if(option1 == 3){
-//       std::cout<<"Thank you for using this program!"<<std::endl;
-//       std::cout<<"************************************************"<<std::endl;
-//       exit(1);
-//     }
-//   }
-//   else {
-//     std::cout<<"Empty entry!"<<std::endl;
-//   }
-//  }
-// }
-

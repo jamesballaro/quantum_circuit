@@ -2,40 +2,37 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 
 Button {
-    id: pbutton
-    property string prefix: "＊"  // Default prefix
-    property string pbuttontext: "Default Text"  // Default button text
-    // padding: -10
-    text: prefix + " " + pbuttontext
+    id: pButton
 
+    property string prefix: "＊" 
+    property string name: "Default Text"  
+    width: 185
 
-    contentItem: Text {
-        text: pbutton.text
-        font: pbutton.font
-        // opacity: pbutton.enabled ? 1.0 : 0.5
-        color: pbutton.down ? "white" : "blue"
+    hoverEnabled: true
 
+    contentItem: Text {  
+        text: pButton.prefix + " " + pButton.name
+        font: pButton.font
+        color: pButton.down ? "white" : (pButton.hovered ? "darkblue" : "blue")
     }
-
+    
     background: Rectangle {
-        color: pbutton.down ? "royalblue" : "#F8F8FD"
-        border.color: pbutton.down ? "blue" : "blue"
+        color: pButton.down ? "royalblue" : (pButton.hovered ? "#DDEEFF" : "#F8F8FD") 
+        border.color: pButton.down ? "blue" : "blue"
         border.width: 1.5
         radius: 5
-        // anchors.horizontalCenter: contentItem.horizontalCenter
+
         anchors.verticalCenter: contentItem.verticalCenter
         anchors.top: contentItem.top
         anchors.left: contentItem.left
         anchors.margins:-5
-        width: 185
-        
+        width: parent.width
+
+        MouseArea {
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+            onClicked: pButton.clicked // Preserve the built-in Button `onClicked` behavior
+        }
     }
-
-
-    // Focus for keyboard navigation
-    // focus: true
-    // Keys.onReturnPressed: pbutton.clicked()
-
-    // Accessibility
-    // Accessible.name: pbutton.text
 }

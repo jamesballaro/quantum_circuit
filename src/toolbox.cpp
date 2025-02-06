@@ -36,10 +36,10 @@ int toolbox::extract_number(const std::string& input)
   return selection;
 }
 
-std::vector<int> toolbox::extract_number(const std::string& input, int num_qbits)
+std::vector<int> toolbox::extract_number(const std::string& input, int num_qubits)
 {
   std::vector<int> selections;
-  selections.reserve(num_qbits);
+  selections.reserve(num_qubits);
   std::stringstream ss(input);
   while(ss.good()){
     std::string substring;
@@ -48,7 +48,7 @@ std::vector<int> toolbox::extract_number(const std::string& input, int num_qbits
     if(element_int == -1){
       selections[0] = -1;
     }
-    if(element_int >= num_qbits){
+    if(element_int >= num_qubits){
       selections[0] = -2;
     }
     else{
@@ -63,22 +63,21 @@ std::vector<int> toolbox::extract_number(const std::string& input, int num_qbits
 
 size_t toolbox::last_gate(bit_row components)
 {
-	auto it = std::find_if(components.rbegin(),components.rend(), 
-													[](const circ_element& ptr){
-													return ptr.second->get_symbol() != "[I]";
-												});
+	auto it = std::find_if(components.rbegin(),components.rend(), [](const std::shared_ptr<circuit_element> ptr){
+    return ptr->get_type() != "Identity";
+  });
 	size_t position = components.rend() -it;
 	return position;
 }
 
-void toolbox::recursive_tensor_product(const component_matrix& components_vector, int num_qbits, int bit_position, int gate_position, matrix& gate_tensor)
+void toolbox::recursive_tensor_product(const component_matrix& components_vector, int num_qubits, int bit_position, int gate_position, matrix& gate_tensor)
 {
-  if(bit_position >= num_qbits){
+  if(bit_position >= num_qubits){
     return;
   }
-  matrix gate_matrix(components_vector[bit_position][gate_position].second->get_matrix());
+  matrix gate_matrix(components_vector[bit_position][gate_position]->get_operator());
   gate_tensor = gate_tensor.tensor_product(gate_matrix);
-  recursive_tensor_product(components_vector, num_qbits, bit_position+1, gate_position, gate_tensor);
+  recursive_tensor_product(components_vector, num_qubits, bit_position+1, gate_position, gate_tensor);
 }
 void toolbox::recursive_matrix_multiplication(std::vector<matrix>& tensor_vector, size_t index, matrix& matrix_product)
 {

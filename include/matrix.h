@@ -48,6 +48,10 @@ public:
 
   //Set data:
   void set_data(std::vector<std::complex<double>> &vector);
+  //Create null matrix
+  matrix null();
+  //Checks for empty matrix
+  bool is_null();
   // Copy constructor
   matrix(const matrix &mat);
   // Move constructor

@@ -11,17 +11,17 @@ int main(int argc, char *argv[])
         QQuickStyle::setStyle("Material");
         QQmlApplicationEngine engine;
 
-        qGUI qgui(&app);
-        qgui.setEngine(&engine);
+        std::unique_ptr<qGUI> qgui = std::make_unique<qGUI>(&app);
+        qgui->setEngine(&engine);
 
-        engine.rootContext()->setContextProperty("qgui", &qgui);
+        engine.rootContext()->setContextProperty("qgui", qgui.get());
+        engine.rootContext()->setContextProperty("gateModel", qgui->gateModel());
 
-        QString projectRoot = QCoreApplication::applicationDirPath() + "/../../src/qml/";
-        QString qmlFilePath = projectRoot + "main.qml";
-        QString componentsPath = projectRoot + "components";
+        engine.addImportPath(QML2_IMPORT_PATH);
+        engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));   
 
-        engine.addImportPath(componentsPath);
-        engine.load(QUrl::fromLocalFile(qmlFilePath));
+        qDebug() << "Is qgui accessible? " << (qgui.get());
+        qDebug() << "Is qgui accessible? " << (qgui->gateModel());
 
         // QObject::connect(&engine, &QQmlApplicationEngine::warnings, [](const QList<QQmlError> &warnings) {
         //     for (const QQmlError &warning : warnings) {
@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
         //     }
         // });
 
-        // Debug root objects
         if (engine.rootObjects().isEmpty()) {
             qDebug() << "Error: Failed to load QML file or components.";
             return -1;
@@ -45,3 +44,13 @@ int main(int argc, char *argv[])
     // menu();
     return 0;
 }
+
+
+// qDebug() << "Checking if main.qml exists:" << QFile::exists(":/qml/main.qml");
+// qDebug() << "Checking if qmldir exists:" << QFile::exists(":/qml/components/qmldir");
+// qDebug() << "Checking if hadamard.png exists:" << QFile::exists(":/qml/icons/hadamard.png");
+// qDebug() << "Does qrc:/qml/components/qmldir exist?" << QFile::exists(":/qml/components/qmldir");
+// QString projectRoot = QCoreApplication::applicationDirPath() + "/../../src/qml/";
+// QString qmlFilePath = projectRoot + "main.qml";
+// QString componentsPath = projectRoot + "components";
+// qDebug() << "QML Import Paths:" << engine.importPathList();

@@ -3,11 +3,6 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.11
 import QtQuick.Window 2.11
 import Components 1.0
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.11
-import QtQuick.Window 2.11
-import Components 1.0
 
 ApplicationWindow {
     id : root
@@ -21,6 +16,37 @@ ApplicationWindow {
         onActivated: {
             console.log("Hot-reload activated!")
             qgui.loadQml()
+        }
+    }
+    ListModel {
+        id: gates
+        ListElement { iconSource: "qrc:/qml/icons/hadamard.png"; gateType: "Hadamard"}
+        ListElement { iconSource: "qrc:/qml/icons/cnot.png"; gateType: "CNOT" }
+        ListElement { iconSource: "qrc:/qml/icons/cz.png"; gateType: "CZ" }
+        ListElement { iconSource: "qrc:/qml/icons/swap.png"; gateType: "Swap" }
+        ListElement { iconSource: "qrc:/qml/icons/toffoli.png"; gateType: "Toffoli" }
+        ListElement { iconSource: "qrc:/qml/icons/phase.png"; gateType: "Phase" }
+        ListElement { iconSource: "qrc:/qml/icons/pauli_x.png"; gateType: "PauliX" }
+        ListElement { iconSource: "qrc:/qml/icons/pauli_y.png"; gateType: "PauliY" }
+        ListElement { iconSource: "qrc:/qml/icons/pauli_z.png"; gateType: "PauliZ" }
+        ListElement { iconSource: ""; gateType: "Identity" }
+    }
+    Component {
+        id: gateComponent
+        GateIcon {
+            gateType: "Default"
+            iconSource: ""
+        }
+    }
+
+    Connections {
+        target: gateModel
+        function onDataChanged() {
+            circuitGrid.model = null;  // Detach model temporarily
+            circuitGrid.model = gateModel; // Reattach model
+            circuitGrid.forceLayout();  // Forces re-rendering
+            console.log("Circuit updated, refreshing UI...");
+            console.log("");
         }
     }
 
@@ -37,7 +63,7 @@ ApplicationWindow {
             border.color: "black"
             border.width: 2
             color: "#F8F8FD"
-            }
+        }
 
         Rectangle {
             id: rowr
@@ -60,18 +86,110 @@ ApplicationWindow {
             anchors.top: rowr.bottom
             anchors.topMargin: 40 // Adds spacing from the top bar
         }
+        Rectangle {
+            id: main
+            width: root.width-220
+            height: root.height-60
+            border.color: "#d2d2d2"
+            border.width: 2
+            anchors.left: columnr.right
+            anchors.top: rowr.bottom
+            anchors.bottom: root.bottom
+            color: "#eaeaea"
+
+            TableView {
+                id: circuitGrid
+                width: parent.width * 0.6  
+                height: parent.height * 0.6
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.topMargin: 100
+                anchors.leftMargin: 75
+                columnSpacing: 80
+                clip: false
+
+                model: gateModel ? gateModel : null
+                
+                property int nrows: model ? model.rowCount() : 2
+                property int ncols: model ? model.columnCount() : 2
+                property int cellWidth: 60
+                property int cellHeight: 40
+
+                function getClosestCell(dropX, dropY) {
+
+                    let cellX = Math.round(dropX / cellWidth) 
+                    let cellY = Math.round(dropY / cellHeight)
+                    
+                    let gridX = cellX * cellWidth;
+                    let gridY = cellY * cellHeight;
+
+                    // console.log("gridx,y",gridX,gridY)
+
+                    if (gridX >= cellWidth && gridX < (ncols+1) * cellWidth && gridY >= 0 && gridY < nrows * cellHeight) {
+                        return { x: gridX, y: gridY , i: cellX, j: cellY};
+
+                    }
+                    return null;
+                }
+
+                Component {
+                    id: textDelegate
+                    BitButton {
+                        implicitWidth: 60
+                        implicitHeight: 40
+                        isRemovable: nrows > 2
+                    }
+                }
+
+                Component {
+                    id: gateDelegate
+                    GateIcon {
+                        implicitWidth: 40
+                        implicitHeight: 40
+                        gateType: type
+                        iconSource: find(gates,gateType)
+                        color: "transparent"
+                        fromPalette: false
+
+                        function find(list, search) {
+                            for(var i = 0; i < list.count; ++i) {
+                                if (list.get(i).gateType === search) 
+                                    return list.get(i).iconSource
+                            }
+                        }
+                    }
+                }
+
+                delegate: Item {
+                    id: delegateItem
+                    implicitWidth:  delegateLoader.implicitWidth
+                    implicitHeight: delegateLoader.implicitHeight
+                    Loader {
+                        id: delegateLoader
+                        anchors.fill: parent
+
+                        Component.onCompleted:{
+                            console.log("textDelegate:",model.gateType) 
+                        }
+
+                        property string type : model.gateType
+                        property int row : model.row
+                        property int column : model.column
+                        property int nrows: circuitGrid.nrows
+
+                        sourceComponent: (model.gateType === "Qubit" || model.gateType === "ClassicalBit") ? textDelegate : gateDelegate
+
+                    }
+                }
+            }
+        }
 
 
        ColumnLayout {
             property int topPadding: 10
             property int leftPadding: 25
             focus: true 
-            id:maincol
-
-            Component.onCompleted: {
-                qgui.launch()
-            }
-            
+            id: maincol
             
             Text { //Title
                 text: "qCircuit GUI ＊ "
@@ -99,71 +217,171 @@ ApplicationWindow {
                 id: iconGrid
                 columns: 3
                 spacing: 10
-                ListModel {
-                    id: gateModel
-                    ListElement { iconSource: "qrc:/qml/icons/hadamard.png"; gateType: "Hadamard" }
-                    ListElement { iconSource: "qrc:/qml/icons/cnot.png"; gateType: "CNOT" }
-                    ListElement { iconSource: "qrc:/qml/icons/cz.png"; gateType: "CZ" }
-                    ListElement { iconSource: "qrc:/qml/icons/swap.png"; gateType: "Swap" }
-                    ListElement { iconSource: "qrc:/qml/icons/toffoli.png"; gateType: "Toffoli" }
-                    ListElement { iconSource: "qrc:/qml/icons/phase.png"; gateType: "Phase" }
-                    ListElement { iconSource: "qrc:/qml/icons/pauli_x.png"; gateType: "Pauli-X" }
-                    ListElement { iconSource: "qrc:/qml/icons/pauli_y.png"; gateType: "Pauli-Y" }
-                    ListElement { iconSource: "qrc:/qml/icons/pauli_z.png"; gateType: "Pauli-Z" }
+                Component.onCompleted:{
+                    iconGrid.createGrid(gates)
                 }
 
-                Repeater {
-                    model: gateModel
-                    GateIcon {
-                        iconSource: model.iconSource
-                        property string gateType: model.gateType
-
-                        Connections {
-                            target: model
-                            function leftClicked() {
-                                console.log("Gate type " + gateType + " left-clicked")
-                                // qgui.handleLeftClick(gateType)
-                            }
-                            function rightClicked() {
-                                console.log("Gate type " + gateType + " right-clicked")
-                                // qgui.handleRightClick(gateType)
-                            }
-                        }
+                function createGateIcon(type, icon) {
+                    let newGate = gateComponent.createObject(iconGrid,{
+                        "iconSource": icon,
+                        "gateType": type,
+                        "fromPalette": true,
+                        color: "transparent"
+                    });
+                    if (newGate) {
+                        console.log("iconGrid: ", type);
+                    } else {
+                        console.error("Failed to create gate:", type);
+                    }
+                }
+                function createGrid(model){
+                    for(var i = 0; i < model.count; ++i) {
+                        createGateIcon(model.get(i).gateType,model.get(i).iconSource)
                     }
                 }
             }
+            // Grid {
+            //     leftPadding: parent.leftPadding
+            //     id: iconGrid
+            //     columns: 3
+            //     spacing: 10
+
+            //     ListModel {
+            //         id: gateListModel
+            //     }
+
+            //     Component.onCompleted: {
+            //         populateInitialGates();
+            //     }
+
+            //     function populateInitialGates() {
+            //         gateListModel.clear(); // Reset the model
+            //         for (var i = 0; i < gates.count; ++i) {
+            //             gateListModel.append({
+            //                 "gateType": gates.get(i).gateType,
+            //                 "iconSource": gates.get(i).iconSource,
+            //                 "index": i,
+            //                 "fromPalette": true
+            //             });
+            //         }
+            //     }
+
+            //     function replaceGate(index) {
+            //         let original = gates.get(index);
+            //         gateListModel.set(index, {
+            //             "gateType": original.gateType,
+            //             "iconSource": original.iconSource,
+            //             "index": index
+            //         });
+            //     }
+
+            //     Repeater {
+            //         model: gateListModel
+            //         delegate: GateIcon {
+            //             id: gateIcon
+            //             iconSource: model.iconSource
+            //             gateType: model.gateType
+            //             color: "transparent"
+            //             fromPalette: true
+
+            //             Drag.active: false
+            //             Drag.source: gateIcon
+            //             Drag.hotSpot.x: width / 2
+            //             Drag.hotSpot.y: height / 2
+
+            //             MouseArea {
+            //                 anchors.fill: parent
+            //                 drag.target: parent
+            //                 onReleased: {
+            //                     if (gateIcon.Drag.active) {
+            //                         console.log("Gate type " + gateType + " was dragged.");
+            //                         gateIcon.Drag.active = false;
+
+            //                         // Restore gate immediately
+            //                         replaceGate(model.index);
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+
+                // Repeater {
+                //     model: gates
+                //     GateIcon {
+                //         iconSource: model.iconSource
+                //         gateType: model.gateType
+                //         color: "transparent"
+                //         fromPalette:true
+
+                //         Connections {
+                //             target: model
+                //             function leftClicked() {
+                //                 console.log("Gate type " + gateType + " left-clicked")
+                //                 // qgui.handleLeftClick(gateType)
+                //             }
+                //             function rightClicked() {
+                //                 console.log("Gate type " + gateType + " right-clicked")
+                //                 // qgui.handleRightClick(gateType)
+                //             }
+                //         }
+                //     }
+                // }
+            
 
             Column{
                 id: buttonGroup
-                topPadding: root.height - 400
+                topPadding: root.height - 450
+                // property int buttonWidth: 185
 
                 PButton { //Save Circuit
                     id: save
-                    // topPadding: 60
-                    // leftPadding: 0
                     prefix: "＊"
-                    pbuttontext: "Save Circuit"
-                    // anchors.right: parent.right            
+                    name: "Save Circuit"
+                    anchors.right: parent.right           
+                    onClicked:{
+                        console.log("Circuit saved")
+                    }
                 }
                 PButton { //Load Circuit
                     id: load
                     // topPadding: 60
                     // leftPadding: 0
                     prefix: "＊"
-                    pbuttontext: "Load Circuit"
+                    name: "Load Circuit"
                     Layout.fillHeight: true
+                    onClicked: {
+                        console.log("Circuit Loaded")
+                    }
                 }
                 PButton { //Exit
                     id: exit
-                    // topPadding: 60
-                    // la
-                    // leftPadding: 0
                     prefix: "＊"
-                    pbuttontext: "Exit"
-                    // anchors.bottom: columnr.bottom
+                    name: "Exit"
+                    onClicked:{
+                        console.log("Exited")
+                        Qt.quit()
+                    }
                 
                 }
             }
         }
     }
 }
+
+// Component.onCompleted: {
+//     console.log("QML: qgui is", qgui);
+//     console.log("model is",model);
+//     if (qgui !== null) {
+//         console.log("QML: qgui.gateModel is", qgui.gateModel);
+//         if (qgui.gateModel === null) {
+//             console.error("ERROR: gateModel is null!");
+//         } else {
+//             console.log("SUCCESS: gateModel is assigned.");
+//         }
+//     } else {
+//         console.error("ERROR: qgui is null!");
+//     }
+// }
+
+                
